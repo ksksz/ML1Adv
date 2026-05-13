@@ -1,0 +1,11 @@
+.git
+.venv
+__pycache__
+.ipynb_checkpoints
+.idea
+catboost_info
+data/log_file.log
+data/results.csv
+model/*.cbm
+model/*.json
+model/*.joblib

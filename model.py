@@ -33,6 +33,7 @@ from ml1adv_cirrhosis.pipeline import (
     run_optuna_study,
     split_features_target,
 )
+from ml1adv_cirrhosis.tracking import close_task, log_training_context, log_training_results, start_task
 
 
 class My_Classifier_Model:
@@ -52,8 +53,10 @@ class My_Classifier_Model:
         depth: int | None = None,
     ) -> dict[str, Any]:
         """Train the model, save artifacts, and log results."""
+        tracking_task = None
         try:
             self.logger.info("Starting training with dataset: %s", dataset)
+            tracking_task = start_task()
             dataframe = load_dataset(dataset)
             features, target = split_features_target(dataframe)
             categorical_columns = detect_categorical_columns(features)
@@ -83,6 +86,7 @@ class My_Classifier_Model:
             if depth is not None:
                 catboost_params["depth"] = depth
 
+            log_training_context(tracking_task, catboost_params, dataset)
             catboost_score = catboost_cross_val_log_loss(
                 features=features,
                 target=target,
@@ -121,6 +125,14 @@ class My_Classifier_Model:
                 training_artifacts.to_json(),
                 encoding="utf-8",
             )
+            log_training_results(
+                tracking_task,
+                baseline_score=baseline_score,
+                catboost_score=catboost_score,
+                model_path=MODEL_FILE,
+                summary_path=TRAINING_SUMMARY_FILE,
+                optuna_path=OPTUNA_STUDY_FILE if OPTUNA_STUDY_FILE.exists() else None,
+            )
 
             self.logger.info(
                 "Training finished. Baseline log loss: %.6f | CatBoost CV log loss: %.6f",
@@ -131,6 +143,8 @@ class My_Classifier_Model:
         except Exception as exc:
             self.logger.exception("Training failed: %s", exc)
             raise
+        finally:
+            close_task(tracking_task)
 
     def predict(self, dataset: str) -> Path:
         """Load the saved model and generate a submission file."""

@@ -21,6 +21,14 @@
 - `log_loss` baseline-модели на 5-fold CV: `0.431983`
 - `log_loss` финальной CatBoost-модели на 5-fold CV: `0.376121`
 
+## Подтверждение Результата На Kaggle
+
+- Финальный результат на Kaggle: `0.37874`
+- Требование задания `log_loss < 0.55` выполнено
+- Подтверждение результата приложено в проект: [kaggle_score_confirmation.png](/Users/kseniazaharova/Desktop/ML1Adv/docs/kaggle/kaggle_score_confirmation.png)
+
+![Подтверждение оценки Kaggle](/Users/kseniazaharova/Desktop/ML1Adv/docs/kaggle/kaggle_score_confirmation.png)
+
 ## Структура репозитория
 
 - [model.py](/Users/kseniazaharova/Desktop/ML1Adv/model.py): основной артефакт проекта с классом `My_Classifier_Model` и методами `train` и `predict`
@@ -108,3 +116,8 @@ docker run --rm \
 - документация Optuna
 - документация scikit-learn
 - документация Poetry
+<<<<<<< HEAD
+## Ограничения
+
+- Kaggle submission уже выполнен, а подтверждение итоговой оценки добавлено в репозиторий.
+- Скриншоты ClearML и удаленный хостинг экспериментов требуют запущенного ClearML-инстанса, который по умолчанию не входит в это локальное окружение.

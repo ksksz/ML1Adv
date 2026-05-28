@@ -1,0 +1,8 @@
+2026-04-27 23:23:11,746 | INFO | ml1adv_cirrhosis | Starting training with dataset: /Users/kseniazaharova/Downloads/train.csv
+2026-04-27 23:26:01,543 | INFO | ml1adv_cirrhosis | Training finished. Baseline log loss: 0.431983 | CatBoost CV log loss: 0.380468
+2026-04-27 23:28:11,683 | INFO | ml1adv_cirrhosis | Starting inference with dataset: /Users/kseniazaharova/Downloads/test.csv
+2026-04-27 23:28:11,804 | INFO | ml1adv_cirrhosis | Inference finished. Results saved to /Users/kseniazaharova/Desktop/ML1Adv/data/results.csv
+2026-04-27 23:28:39,726 | INFO | ml1adv_cirrhosis | Starting training with dataset: /Users/kseniazaharova/Downloads/train.csv
+2026-04-27 23:29:38,394 | INFO | ml1adv_cirrhosis | Training finished. Baseline log loss: 0.431983 | CatBoost CV log loss: 0.376121
+2026-04-27 23:29:45,255 | INFO | ml1adv_cirrhosis | Starting inference with dataset: /Users/kseniazaharova/Downloads/test.csv
+2026-04-27 23:29:45,339 | INFO | ml1adv_cirrhosis | Inference finished. Results saved to /Users/kseniazaharova/Desktop/ML1Adv/data/results.csv
